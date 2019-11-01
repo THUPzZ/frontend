@@ -1,12 +1,36 @@
-FROM node:alpine as buildstage
-WORKDIR /app
-COPY . /app
-RUN npm install 
-RUN npm run build
+# Extending image
+FROM node:carbon
 
-FROM nginx:alpine
-WORKDIR /app
-COPY --from=stage ./public/ /var/share/www
-COPY nginx.conf /etc/nginx/conf
-EXPOSE 80
-CMD [ "nginx", "-g", "deamon off;" ]
+RUN apt-get update
+RUN apt-get upgrade -y
+RUN apt-get -y install autoconf automake libtool nasm make pkg-config git apt-utils
+
+# Create app directory
+RUN mkdir -p /usr/src/app
+WORKDIR /usr/src/app
+
+# Versions
+RUN npm -v
+RUN node -v
+
+# Install app dependencies
+COPY package.json /usr/src/app/
+COPY package-lock.json /usr/src/app/
+
+RUN npm install
+
+# Bundle app source
+COPY . /usr/src/app
+
+# Port to listener
+EXPOSE 3000
+
+# Environment variables
+ENV NODE_ENV production
+ENV PORT 3000
+ENV PUBLIC_PATH "/"
+
+RUN npm run start:build
+
+# Main command
+CMD [ "npm", "run", "start:server" ]
