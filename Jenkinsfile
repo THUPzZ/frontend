@@ -6,25 +6,28 @@ pipeline {
     }
 
     stages {
-        stage('Build') {
+        stage('Checkout') {
+            checkout scm
+        }
+        stage('Environment') {
             steps {
-                sh 'echo stage Build '
-            }
+                sh 'git --version'
+                echo "Branch: ${env.BRANCH_NAME}"
+                sh 'docker -v'
+                sh 'printenv'
+            } 
         }
         stage('Test') {
             steps {
                 sh 'echo stage test'
-            }
-            
+            } 
         }
         stage('Build image') {
             steps {
-                sh 'echo Build image'
-            }
-        }
-        stage('Push image') {
-            steps {
-                sh 'echo Push image'
+                sh 'docker build -t frontend --no-cache .'
+                sh 'docker tag frontend localhost:5000/frontend'
+                sh 'docker push localhost:5000/frontend'
+                sh 'docker rmi -f frontend localhost:5000/frontend'
             }
         }
         stage('Deployment') {
