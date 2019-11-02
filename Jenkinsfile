@@ -21,9 +21,9 @@ pipeline {
         }
         stage('Build image') {
             steps {
-                sh 'docker build -t frontend --no-cache .'
-                sh 'docker tag frontend localhost:5000/frontend'
-                sh 'docker push localhost:5000/frontend'
+                sh 'docker build -t frontend:1 --no-cache .'
+                sh 'docker tag frontend:1 localhost:5000/frontend:1'
+                sh 'docker push localhost:5000/frontend:1'
             }
         }
         stage('Deployment') {
