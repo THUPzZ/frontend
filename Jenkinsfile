@@ -1,6 +1,6 @@
 node {
+  agent any
   try {
-    agent any
     stage('Checkout') {
       checkout scm
     }
