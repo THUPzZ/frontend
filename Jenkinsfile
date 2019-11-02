@@ -6,24 +6,24 @@ node {
     stage('Environment') {
       sh 'git --version'
       echo "Branch: ${env.BRANCH_NAME}"
-      sh 'sudo docker -v'
-      sh 'sudo printenv'
+      sh 'docker -v'
+      sh 'printenv'
     }
     stage('Build Docker test'){
-     sh 'sudo docker build -t react-test -f Dockerfile --no-cache .'
+     sh 'docker build -t react-test -f Dockerfile --no-cache .'
     }
     stage('Docker test'){
-      sh 'sudo docker run --rm react-test'
+      sh 'docker run --rm react-test'
     }
     stage('Clean Docker test'){
-      sh 'sudo docker rmi react-test'
+      sh 'docker rmi react-test'
     }
     stage('Deploy'){
       if(env.BRANCH_NAME == 'master'){
-        sh 'sudo docker build -t frontend --no-cache .'
-        sh 'sudo docker tag frontend 127.0.0.1:5000/frontend'
-        sh 'sudo docker push 127.0.0.1:5000/frontend'
-        sh 'sudo docker rmi -f frontend 127.0.0.1:5000/frontend'
+        sh 'docker build -t frontend --no-cache .'
+        sh 'docker tag frontend 127.0.0.1:5000/frontend'
+        sh 'docker push 127.0.0.1:5000/frontend'
+        sh 'docker rmi -f frontend 127.0.0.1:5000/frontend'
       }
     }
   }
