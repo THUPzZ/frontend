@@ -1,5 +1,10 @@
 node {
-  agent any
+  agent {
+    // this image provides everything needed to run Cypress
+    docker {
+      image 'cypress/base:10'
+    }
+  }
   try {
     stage('Checkout') {
       checkout scm
