@@ -21,7 +21,7 @@ pipeline {
         }
         stage('Build image') {
             steps {
-                sh 'sudo docker-compose -f ./docker-compose.yml build'
+                sh 'docker-compose -f ./docker-compose.yml build'
                 //sh 'docker build -t frontend:1 --no-cache .'
                 sh 'docker tag frontend:1 localhost:5000/frontend:1'
                 sh 'docker push localhost:5000/frontend:1'
