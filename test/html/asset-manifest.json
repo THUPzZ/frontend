@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/static/css/main.2c7f3e72.chunk.css",
+    "main.js": "/static/js/main.e103520e.chunk.js",
+    "main.js.map": "/static/js/main.e103520e.chunk.js.map",
+    "runtime~main.js": "/static/js/runtime~main.a8a9905a.js",
+    "runtime~main.js.map": "/static/js/runtime~main.a8a9905a.js.map",
+    "static/js/2.667e3c37.chunk.js": "/static/js/2.667e3c37.chunk.js",
+    "static/js/2.667e3c37.chunk.js.map": "/static/js/2.667e3c37.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.5460be628019a22af9bbe70d5613c4c6.js": "/precache-manifest.5460be628019a22af9bbe70d5613c4c6.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/main.2c7f3e72.chunk.css.map": "/static/css/main.2c7f3e72.chunk.css.map",
+    "static/media/1561135037944.jpg": "/static/media/1561135037944.2e92f168.jpg",
+    "static/media/clouds.png": "/static/media/clouds.61c4e000.png",
+    "static/media/paper-kit.scss": "/static/media/nucleo-icons.f32ed5ad.eot"
+  }
+}
