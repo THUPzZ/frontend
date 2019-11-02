@@ -6,9 +6,6 @@ pipeline {
     }
 
     stages {
-        stage('Checkout') {
-            checkout scm
-        }
         stage('Environment') {
             steps {
                 sh 'git --version'
