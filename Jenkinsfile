@@ -21,9 +21,9 @@ node {
     stage('Deploy'){
       if(env.BRANCH_NAME == 'master'){
         sh 'docker build -t frontend --no-cache .'
-        sh 'docker tag frontend http://13.229.128.164:5000/frontend'
-        sh 'docker push http://13.229.128.164:5000:5000/frontend'
-        sh 'docker rmi -f frontend http://13.229.128.164:5000/frontend'
+        sh 'docker tag frontend http://54.169.172.208:5000/frontend'
+        sh 'docker push http://54.169.172.208:5000:5000/frontend'
+        sh 'docker rmi -f frontend http://54.169.172.208:5000/frontend'
       }
     }
   }
