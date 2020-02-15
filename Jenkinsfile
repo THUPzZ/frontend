@@ -10,7 +10,7 @@ pipeline {
             steps {
                 sh 'git --version'
                 echo "Branch: ${env.BRANCH_NAME}"
-                sh 'docker -v'
+                sh 'sudo docker -v'
                 sh 'printenv'
             } 
         }
@@ -21,10 +21,10 @@ pipeline {
         }
         stage('Build image') {
             steps {
-                sh 'docker-compose -f ./docker-compose.yml build'
+                sh 'sudo docker-compose -f ./docker-compose.yml build'
                 //sh 'docker build -t frontend:1 --no-cache .'
-                sh 'docker tag frontend:1 localhost:5001/frontend:1'
-                sh 'docker push localhost:5001/frontend:1'
+                sh 'sudo docker tag frontend:1 localhost:5001/frontend:1'
+                sh 'sudo docker push localhost:5001/frontend:1'
             }
         }
         stage('Deployment') {
