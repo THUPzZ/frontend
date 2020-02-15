@@ -7,5 +7,5 @@ sudo docker run \
         --restart=always \
         -itd \
         --name frontend \
-        -p 80:80 \
+        -p 8000:80 \
         frontend:1
